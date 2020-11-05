@@ -1,4 +1,17 @@
 const container = document.getElementById('container');
+const clearButton = document.querySelector('#clearButton');
+
+clearButton.addEventListener("click", () => {
+    clearGrid();
+    let nRow = prompt("Enter the new number of rows");
+    let nCol = prompt("Enter the new number of columns");
+    makeGrid(nRow, nCol);
+});
+
+function clearGrid() {
+    while (container.childNodes.length != 0)
+    container.removeChild(container.childNodes[0]);
+}
 
 function makeGrid(rows, cols) {
     container.style.setProperty('--grid-rows', rows);
@@ -16,7 +29,7 @@ function hoverColor() {
     items.forEach(item => {
         item.addEventListener('mouseenter', () => {
 
-            item.style.backgroundColor = "rgb("+randomColor()+","+randomColor()+","+randomColor()+")";
+            item.style.backgroundColor = "rgb(" + randomColor() + "," + randomColor() + "," + randomColor() + ")";
         });
         // item.addEventListener('mouseout', () => {
         //     item.style.backgroundColor = "white";
@@ -33,5 +46,6 @@ function randomColor() {
 }
 
 makeGrid(16, 16);
+
 
 
