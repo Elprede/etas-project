@@ -27,10 +27,19 @@ function makeGrid(rows, cols) {
 function hoverColor() {
     let items = document.querySelectorAll('.grid-item');
     items.forEach(item => {
+        let r = randomColor();
+        let g = randomColor();
+        let b = randomColor();
+        let brightness = 1;
         item.addEventListener('mouseenter', () => {
-
-            item.style.backgroundColor = "rgb(" + randomColor() + "," + randomColor() + "," + randomColor() + ")";
+            item.style.backgroundColor = "rgb(" + r + "," + g + "," + b + "," + 1 + ")";
+            item.style.filter = "brightness(" + brightness + ")";
+            brightness -= 0.1;
+            if (brightness <= 0) {
+                brightness = 0;
+            };
         });
+
         // item.addEventListener('mouseout', () => {
         //     item.style.backgroundColor = "white";
         //     // setTimeout(function() {
